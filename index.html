@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; font-src 'self'; form-action 'self'">
+<title>Textile unit-costing calculator for weavers and tailors · Open MSME</title>
+<meta name="description" content="Work out the true per-metre or per-piece cost of handloom and tailored textiles from yarn weight, wastage, job-work, labour and overhead — with break-even and margin bands, in rupees or pesos.">
+<meta name="color-scheme" content="light dark">
+<meta property="og:title" content="Textile unit-costing calculator for weavers and tailors">
+<meta property="og:description" content="Build the true per-metre or per-piece cost from yarn, wastage, job-work and labour, then see break-even and margin bands.">
+<meta property="og:type" content="website">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="assets/accent.css">
+<script src="assets/theme-init.js"></script>
+</head>
+<body>
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="./">
+      <span class="dot"></span>
+      <b>Open MSME</b>
+      <span class="tag">textile costing</span>
+    </a>
+    <span class="sp"></span>
+    <a class="home" href="https://sreenivas-sadhu-prabhakara.github.io/openmsme/">All tools</a>
+    <button class="themer" data-themer type="button">Theme</button>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <div class="eyebrow">Textiles &amp; apparel · India &amp; Philippines</div>
+      <h1>Textile unit-costing calculator for weavers and tailors</h1>
+      <p class="lede">Build the true per-metre or per-piece cost from yarn, wastage, job-work and labour — then see break-even and margin bands.</p>
+      <div class="who">
+        <span class="pill">Weavers, dyers, boutique tailors</span>
+        <span class="pill">True cost &amp; margin</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <div class="cols calc">
+
+      <section class="card">
+        <h2>Inputs</h2>
+
+        <div class="field">
+          <label>Currency</label>
+          <div class="seg" role="group" aria-label="Currency">
+            <button type="button" data-cur="INR" aria-pressed="true">₹ INR</button>
+            <button type="button" data-cur="PHP" aria-pressed="false">₱ PHP</button>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Price unit</label>
+          <div class="seg" role="group" aria-label="Price unit">
+            <button type="button" data-unit="metre" aria-pressed="true">per metre</button>
+            <button type="button" data-unit="piece" aria-pressed="false">per piece</button>
+          </div>
+        </div>
+
+        <div class="row2">
+          <div class="field">
+            <label for="warp">Warp yarn weight</label>
+            <div class="inp has-suf">
+              <input type="number" id="warp" value="180" min="0" step="any" inputmode="decimal">
+              <span class="suf">g</span>
+            </div>
+          </div>
+          <div class="field">
+            <label for="weft">Weft yarn weight</label>
+            <div class="inp has-suf">
+              <input type="number" id="weft" value="160" min="0" step="any" inputmode="decimal">
+              <span class="suf">g</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="row2">
+          <div class="field">
+            <label for="rate">Yarn rate per kg</label>
+            <div class="inp has-pre">
+              <span class="pre">₹</span>
+              <input type="number" id="rate" value="320" min="0" step="any" inputmode="decimal">
+            </div>
+          </div>
+          <div class="field">
+            <label for="wastage">Wastage</label>
+            <div class="inp has-suf">
+              <input type="number" id="wastage" value="5" min="0" step="any" inputmode="decimal">
+              <span class="suf">%</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="row2">
+          <div class="field">
+            <label for="dyeing">Dyeing / printing per unit</label>
+            <div class="inp has-pre">
+              <span class="pre">₹</span>
+              <input type="number" id="dyeing" value="25" min="0" step="any" inputmode="decimal">
+            </div>
+          </div>
+          <div class="field">
+            <label for="embroidery">Embroidery / other job-work per unit</label>
+            <div class="inp has-pre">
+              <span class="pre">₹</span>
+              <input type="number" id="embroidery" value="0" min="0" step="any" inputmode="decimal">
+            </div>
+          </div>
+        </div>
+
+        <div class="row2">
+          <div class="field">
+            <label for="labour">Labour per unit</label>
+            <div class="inp has-pre">
+              <span class="pre">₹</span>
+              <input type="number" id="labour" value="40" min="0" step="any" inputmode="decimal">
+            </div>
+          </div>
+          <div class="field">
+            <label for="overhead">Overhead per unit</label>
+            <div class="inp has-pre">
+              <span class="pre">₹</span>
+              <input type="number" id="overhead" value="15" min="0" step="any" inputmode="decimal">
+            </div>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="margin">Margin</label>
+          <div class="inp has-suf">
+            <input type="number" id="margin" value="25" min="0" step="any" inputmode="decimal">
+            <span class="suf">%</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="card sticky">
+        <h2>Result</h2>
+        <div class="result-primary">
+          <div class="k" id="out-k">Selling price per metre</div>
+          <div class="v" id="out-price">—</div>
+          <div class="sub" id="out-sub">—</div>
+        </div>
+
+        <table class="breakdown">
+          <tbody>
+            <tr><td>Yarn (warp + weft)</td><td class="num" id="r-yarn">—</td></tr>
+            <tr><td>+ Wastage</td><td class="num" id="r-wastage">—</td></tr>
+            <tr><td>Dyeing / printing</td><td class="num" id="r-dyeing">—</td></tr>
+            <tr><td>Embroidery / job-work</td><td class="num" id="r-embroidery">—</td></tr>
+            <tr><td>Labour</td><td class="num" id="r-labour">—</td></tr>
+            <tr><td>Overhead</td><td class="num" id="r-overhead">—</td></tr>
+            <tr class="sub"><td>True cost</td><td class="num" id="r-truecost">—</td></tr>
+            <tr><td>Margin</td><td class="num" id="r-margin">—</td></tr>
+            <tr class="total"><td>Selling price</td><td class="num" id="r-price">—</td></tr>
+          </tbody>
+        </table>
+
+        <h3>Margin bands</h3>
+        <table class="breakdown">
+          <thead>
+            <tr><th>Margin on true cost</th><th class="num">Selling price</th></tr>
+          </thead>
+          <tbody>
+            <tr id="band-10"><td>10%</td><td class="num" id="b-10">—</td></tr>
+            <tr id="band-20"><td>20%</td><td class="num" id="b-20">—</td></tr>
+            <tr id="band-30"><td>30%</td><td class="num" id="b-30">—</td></tr>
+            <tr id="band-40"><td>40%</td><td class="num" id="b-40">—</td></tr>
+          </tbody>
+        </table>
+
+        <div class="btnrow">
+          <button class="btn ghost" id="print" type="button">Print / Save PDF</button>
+          <button class="btn ghost" id="reset" type="button">Reset</button>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <div class="wrap">
+    <section class="prose">
+      <h2>How it works</h2>
+      <p>Yarn is bought by the kilogram, so the warp and weft weights are added and divided by 1,000 to turn grams into kilograms, then multiplied by the yarn rate per kg to give the yarn cost. Wastage grosses up the yarn cost only — it covers thread lost to sizing, broken ends and cutting — and leaves the job-work and labour figures untouched. Dyeing or printing, embroidery or other job-work, labour and overhead are each added as a flat amount per unit. Adding them to the grossed-up yarn gives the true cost, which is your break-even. The selling price is the true cost plus your margin percentage.</p>
+      <p>In short: <code>yarn = (warp + weft) ÷ 1000 × rate/kg</code>, grossed up by wastage, then <code>true cost = yarn-after-wastage + dyeing + embroidery + labour + overhead</code> and <code>price = true cost × (1 + margin%)</code>.</p>
+
+      <details class="assumptions">
+        <summary>Assumptions &amp; rates</summary>
+        <ul>
+          <li>Yarn is priced per kilogram; warp and weft are entered in grams and converted at 1,000&nbsp;g = 1&nbsp;kg.</li>
+          <li>Wastage applies to the yarn cost only, never to job-work, labour or overhead.</li>
+          <li>Dyeing / printing, embroidery / job-work, labour and overhead are flat amounts per unit.</li>
+          <li>Break-even equals the true cost; margin is taken on the true cost.</li>
+          <li>The margin-bands table shows the selling price at 10%, 20%, 30% and 40% on the true cost.</li>
+        </ul>
+      </details>
+
+      <div class="note">An estimate to price consistently — adjust for your counts, shrinkage and finishing.</div>
+    </section>
+  </div>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <span>Open MSME · open-source tool for MSMEs in India &amp; the Philippines · MIT</span>
+    <span><a href="https://sreenivas-sadhu-prabhakara.github.io/openmsme/">All tools</a></span>
+  </div>
+</footer>
+
+<script src="assets/ui.js"></script>
+<script src="assets/calc.js"></script>
+</body>
+</html>
